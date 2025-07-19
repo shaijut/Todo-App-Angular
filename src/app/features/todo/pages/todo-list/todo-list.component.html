@@ -1,0 +1,36 @@
+<h2>📝 My TODOs</h2>
+
+<!-- 👇 Form to add new TODOs. (ngSubmit) triggers addTodo() on submit -->
+<form (ngSubmit)="addTodo()">
+  <!-- 👇 Two-way bind input to newTodoTitle -->
+  <input 
+    type="text" 
+    placeholder="Add new task..." 
+    [(ngModel)]="newTodoTitle" 
+    name="title" 
+    required 
+  />
+  <button type="submit">➕ Add</button>
+</form>
+
+<!-- 👇 Show the list only if there are todos -->
+<ul *ngIf="todos.length > 0; else noTodos">
+  <!-- 👇 Loop through each todo and display it -->
+  <li *ngFor="let todo of todos">
+    <!-- 👇 Checkbox bound to todo.completed -->
+    <input type="checkbox" [(ngModel)]="todo.completed" />
+    
+    <!-- 👇 Style the title if task is completed -->
+    <span [class.completed]="todo.completed">
+      {{ todo.title }}
+    </span>
+
+    <!-- 👇 Button to delete a TODO -->
+    <button (click)="deleteTodo(todo.id)" class="btn-delete">🗑️</button>
+  </li>
+</ul>
+
+<!-- 👇 Fallback message when there are no todos -->
+<ng-template #noTodos>
+  <p>✅ All done! No tasks left.</p>
+</ng-template>
