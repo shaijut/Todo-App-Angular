@@ -1,41 +1,126 @@
-# Todo App 
 
-> 📝 **Note:** This TODO app does **not** use any API/backend.  
-> It’s built with static data and local state only — designed to help beginners grasp Angular basics like components, forms, and bindings etc clearly.
-> It's designed to help beginners understand Angular basics like components, forms, and bindings.
+# ✅ Angular 18 TODO App — Real API + Modern Angular
 
-✅ **Helpful Comments Included:**  
-Key files (like components, modules, routing, etc.) include inline comments.  
-**Don't get confused** — just read the comments to quickly understand Angular syntax and structure.
+> Built using Angular 18.2.20, this project teaches core Angular concepts **with real API integration**, clean architecture, and all modern best practices.
 
 ---
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.20.
+
+## 🔥 Live Version
+Runs at `http://localhost:4200` after starting the dev server with:
+
+```bash
+ng serve
+```
+
 ---
 
-## Development server
+## 📘 What You’ll Learn — Angular TODO App Tutorial Summary
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project is a **complete Angular learning path** using a real-world TODO app example, with working **CRUD operations connected to an actual backend API**.
 
-## 📘 What You Will Learn — Angular TODO App Tutorial Summary
+### ✅ Core Angular Skills Covered
 
-This project is a complete learning journey through **modern Angular (v18)**, using a real-world TODO app as the foundation. It covers:
+- ✅ **Project Setup** using Angular CLI (v18.2+)
+- ✅ **Modular Architecture** with `AppModule`, `TodoModule`, `SharedModule`
+- ✅ **Component Fundamentals**:
+  - `selector`, `templateUrl`, `styleUrls`, and TypeScript `class`
+- ✅ **Template & Data Binding**:
+  - One-way: `{{ title }}`
+  - Two-way: `[(ngModel)]`
+  - Event binding: `(click)`, `(ngSubmit)`
+- ✅ **Directives**:
+  - Structural: `*ngFor`, `*ngIf`
+  - Attribute: `[class.completed]`, `[disabled]`
+- ✅ **Services & Dependency Injection**:
+  - Central `TodoService` handles API logic
+  - `FeedbackService` manages UI messages
+- ✅ **HTTP Integration**:
+  - API calls with `HttpClient`: `GET`, `POST`, `PUT`, `DELETE`
+  - RxJS: `subscribe()`, `BehaviorSubject`, and streams
+- ✅ **Form Handling**:
+  - Template-driven forms for creating and editing TODOs
+- ✅ **UX & Feedback**:
+  - Inline feedback messages on add, delete, update
+  - Completion toggle with checkboxes
+  - Edit mode with cancel/save buttons
+- ✅ **Error Handling**:
+  - All network errors are gracefully handled with toast-like UI feedback
+- ✅ **Best Practices**:
+  - Clean folder structure
+  - Component logic separated into services
+  - Immutability & state updates via `map`, `filter`, and `spread (...)`
 
-### ✅ Core Angular Skills
-- **Project setup with Angular CLI** (using AppModule structure)
-- **Component fundamentals**: selector, template, class, and styles
-- **Modular architecture**: `AppModule` + `TodoModule`
-- **Template & data binding**: `*ngFor`, `*ngIf`, `{{ }}`, `[property]`
-- **Two-way binding** with `[(ngModel)]` in forms
-- **Add new TODOs** via form with `(ngSubmit)`
-- **Toggle completion** using checkboxes with `[(ngModel)]`
-- **Delete TODOs** using `(click)` event and `Array.filter()`
-- **UI feedback** via conditional classes (e.g., strike-through for completed tasks)
-- Followed **Angular best practices** and **style guide-compliant folder structure**
+---
 
-### 🧠 Tools & Techniques Used
-- Angular 18 features (classic `NgModule`-based setup)
-- Feature modules for clean, scalable code
+## 🧠 Architecture Highlights
+
+| Layer | Responsibility |
+|-------|----------------|
+| `AppModule` | Root module, sets up routing and feature modules |
+| `TodoModule` | Manages TODO-related components and services |
+| `TodoListComponent` | Handles user interface and UI logic |
+| `TodoService` | Central point for API interactions |
+| `FeedbackService` | Emits success/error messages to the UI |
+| `environment.ts` | Stores the base API URL for easy config |
+
+---
+
+## 🚀 API-Powered (No More Local State!)
+
+> Unlike earlier versions in branch: `todo-no-api`, this app **no longer uses static data**.  
+All TODOs are managed through an actual backend API using Angular's `HttpClient`.
+
+---
+
+## ✅ Helpful Comments Throughout Code
+
+Inline comments in:
+- Components
+- Services
+- Module setup
+- HTML templates
+
+These help you **read and understand** the Angular concepts **step by step**.
+
+---
+
+## 📦 Technologies Used
+
+- Angular 18.2+
+- RxJS
+- SCSS
 - Template-driven forms
-- Component communication and structure clarity
-- Local state management (no API yet)
+- REST API integration
+- Optional modules & routing
+- BehaviorSubject for UI feedback
 
+---
+
+## 📂 Folder Structure
+
+```
+src/
+│
+├── app/
+│   ├── app.module.ts
+│   ├── app-routing.module.ts
+│   ├── todo/
+│   │   ├── todo.module.ts
+│   │   ├── todo-list/
+│   │   │   ├── todo-list.component.ts
+│   │   │   ├── todo-list.component.html
+│   │   ├── todo.service.ts
+│   └── shared/
+│       └── feedback.service.ts
+│
+├── assets/
+├── environments/
+└── main.ts
+```
+
+---
+
+## 👋 Happy Coding
+
+> This app is built to learn  **Angular Basics** the clean and scalable way.  
+Feel free to fork, clone, or build upon this starter!

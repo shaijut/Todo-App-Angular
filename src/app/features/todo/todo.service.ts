@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface Todo {
   id: number;
@@ -13,23 +14,23 @@ export interface Todo {
   providedIn: 'root',
 })
 export class TodoService {
-  private apiUrl = 'http://localhost:5083/api/Todo'; // 🔁 Replace with your real API
+  private baseUrl = environment.apiUrl; // ✅ Reuse this in all HTTP calls
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.apiUrl);
+    return this.http.get<Todo[]>(`${this.baseUrl}/todo`);
   }
 
   addTodo(todo: Partial<Todo>): Observable<Todo> {
-    return this.http.post<Todo>(this.apiUrl, todo);
-  }
-
-  deleteTodo(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.post<Todo>(`${this.baseUrl}/todo`, todo);
   }
 
   updateTodo(todo: Todo): Observable<Todo> {
-  return this.http.put<Todo>(`${this.apiUrl}/${todo.id}`, todo);
-}
+    return this.http.put<Todo>(`${this.baseUrl}/todo/${todo.id}`, todo);
+  }
+
+  deleteTodo(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/todo/${id}`);
+  }
 }
