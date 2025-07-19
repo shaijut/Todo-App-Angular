@@ -1,36 +1,67 @@
 <h2>📝 My TODOs</h2>
 
-<!-- 👇 Form to add new TODOs. (ngSubmit) triggers addTodo() on submit -->
+<!-- 🆕 Add new TODO -->
 <form (ngSubmit)="addTodo()">
-  <!-- 👇 Two-way bind input to newTodoTitle -->
-  <input 
-    type="text" 
-    placeholder="Add new task..." 
-    [(ngModel)]="newTodoTitle" 
-    name="title" 
-    required 
-  />
+  <input type="text" placeholder="Add new task..." [(ngModel)]="newTodoTitle" name="title" required />
   <button type="submit">➕ Add</button>
 </form>
 
-<!-- 👇 Show the list only if there are todos -->
-<ul *ngIf="todos.length > 0; else noTodos">
-  <!-- 👇 Loop through each todo and display it -->
-  <li *ngFor="let todo of todos">
-    <!-- 👇 Checkbox bound to todo.completed -->
-    <input type="checkbox" [(ngModel)]="todo.completed" />
-    
-    <!-- 👇 Style the title if task is completed -->
-    <span [class.completed]="todo.completed">
-      {{ todo.title }}
-    </span>
+<div class="filters">
+  <label>
+    <input type="radio" [(ngModel)]="filter" value="all" />
+    All
+  </label>
+  <label>
+    <input type="radio" [(ngModel)]="filter" value="active" />
+    Active
+  </label>
+  <label>
+    <input type="radio" [(ngModel)]="filter" value="completed" />
+    Completed
+  </label>
+</div>
 
-    <!-- 👇 Button to delete a TODO -->
+
+<!-- ✅ Feedback below add input -->
+<!-- Feedback for Add -->
+<p *ngIf="(feedbackMessage$ | async) as feedback" [ngClass]="feedback.type" class="feedback">
+  {{ feedback.message }}
+</p>
+
+<!-- ✅ Show spinner during load -->
+<div *ngIf="loading$ | async" class="spinner">⏳ Loading...</div>
+
+<!-- ✅ Show TODO list if loaded and has items -->
+<ul *ngIf="!(loading$ | async) && todos.length > 0; else noTodos">
+  <li *ngFor="let todo of filteredTodos; trackBy: trackById">
+
+    <!-- ✅ Checkbox -->
+    <input type="checkbox" [checked]="todo.isCompleted" (change)="toggleCompleted(todo)"
+      [disabled]="editingTodoId === todo.id" />
+
+    <!-- ✅ Title or input field -->
+    <ng-container *ngIf="editingTodoId !== todo.id; else editInput">
+      <span [class.completed]="todo.isCompleted">
+        {{ todo.title }}
+      </span>
+
+      <!-- ✏️ Edit button -->
+      <button (click)="startEditing(todo)">✏️ Edit</button>
+    </ng-container>
+
+    <!-- 🔁 Input field + Save/Cancel buttons -->
+    <ng-template #editInput>
+      <input type="text" [(ngModel)]="editingTitle" autofocus />
+      <button (click)="saveEdit(todo)">💾 Save</button>
+      <button (click)="cancelEdit()">❌ Cancel</button>
+    </ng-template>
+
+    <!-- 🗑️ Delete button -->
     <button (click)="deleteTodo(todo.id)" class="btn-delete">🗑️</button>
   </li>
 </ul>
 
-<!-- 👇 Fallback message when there are no todos -->
+<!-- ✅ Show empty state only when not loading -->
 <ng-template #noTodos>
-  <p>✅ All done! No tasks left.</p>
+  <p *ngIf="!(loading$ | async)">✅ All done! No tasks left.</p>
 </ng-template>

@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { TodoModule } from './features/todo/todo.module'; // ✅ Import feature module
 
 // 👇 @NgModule is a decorator that marks this class as an Angular module
@@ -18,6 +19,7 @@ import { TodoModule } from './features/todo/todo.module'; // ✅ Import feature 
   imports: [
     BrowserModule,     // 👈 Enables app to run in a browser
     AppRoutingModule,  // 👈 Handles routing for main app views
+    HttpClientModule,
     TodoModule         // 👈 Feature module that contains the TODO functionality
   ],
   providers: [],        // 👈 Add services here if needed (none for now)
