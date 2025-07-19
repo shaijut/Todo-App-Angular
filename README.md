@@ -1,27 +1,41 @@
-# TodoApp
+# Todo App 
 
+> 📝 **Note:** This TODO app does **not** use any API/backend.  
+> It’s built with static data and local state only — designed to help beginners grasp Angular basics like components, forms, and bindings etc clearly.
+> It's designed to help beginners understand Angular basics like components, forms, and bindings.
+
+✅ **Helpful Comments Included:**  
+Key files (like components, modules, routing, etc.) include inline comments.  
+**Don't get confused** — just read the comments to quickly understand Angular syntax and structure.
+
+---
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.20.
+---
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## 📘 What You Will Learn — Angular TODO App Tutorial Summary
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project is a complete learning journey through **modern Angular (v18)**, using a real-world TODO app as the foundation. It covers:
 
-## Build
+### ✅ Core Angular Skills
+- **Project setup with Angular CLI** (using AppModule structure)
+- **Component fundamentals**: selector, template, class, and styles
+- **Modular architecture**: `AppModule` + `TodoModule`
+- **Template & data binding**: `*ngFor`, `*ngIf`, `{{ }}`, `[property]`
+- **Two-way binding** with `[(ngModel)]` in forms
+- **Add new TODOs** via form with `(ngSubmit)`
+- **Toggle completion** using checkboxes with `[(ngModel)]`
+- **Delete TODOs** using `(click)` event and `Array.filter()`
+- **UI feedback** via conditional classes (e.g., strike-through for completed tasks)
+- Followed **Angular best practices** and **style guide-compliant folder structure**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 🧠 Tools & Techniques Used
+- Angular 18 features (classic `NgModule`-based setup)
+- Feature modules for clean, scalable code
+- Template-driven forms
+- Component communication and structure clarity
+- Local state management (no API yet)
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
